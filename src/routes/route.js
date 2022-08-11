@@ -108,7 +108,6 @@ router.post("/POST/players",function(req,res){
         {
             return res.send("the player is exit")
         }
-    
         else{
             players.push(ele)
         
@@ -116,5 +115,121 @@ router.post("/POST/players",function(req,res){
     res.send({date:players})
 }
 })
+// let forId=[
+//     {
+//         "bookingNumber": 1,
+//         "sportId": "51",
+//         "centerId": "71",
+//        "type": "private",
+//        "slot": "16286598000000",
+//        "bookedOn": "31/08/2021",
+//        "bookedFor": "01/09/2021"
+//       },
+//       {
+//         "bookingNumber": 2,
+//         "sportId": "52",
+//         "centerId": "72",
+//        "type": "private",
+//        "slot": "16286598000000",
+//        "bookedOn": "31/08/2021",
+//        "bookedFor": "01/09/2021"
+//       },
+//       {
+//         "bookingNumber": 3,
+//         "sportId": "53",
+//         "centerId": "73",
+//        "type": "private",
+//        "slot": "16286598000000",
+//        "bookedOn": "31/08/2021",
+//        "bookedFor": "01/09/2021"
+//       },
+//       {
+//         "bookingNumber": 4,
+//         "sportId": "54",
+//         "centerId": "74",
+//        "type": "private",
+//        "slot": "16286598000000",
+//        "bookedOn": "31/08/2021",
+//        "bookedFor": "01/09/2021"
+//       }
+// ]
+// // start logic from the here
+// const storeId=[0]
+// router.post("/players/playerName/bookings/bookingId",function(req,res){
+// let playerId=req.query.id
+// console.log(playerId)
+// let playerName=req.query.name
+// if(playerId in  storeId){   
+//     return res.send("id is bookd try again")
+// }
+// else{
+//     let isNameMatch=false;
+//     // to  check name is already exists in my array or not
+//     for (let index = 0; index < players.length; index++) {
+//         if(players[index].name==playerName){
+//             isNameMatch=true
+//             for (let index = 0; index < forId.length; index++) {
+//                 if(forId[index].bookingNumber==playerId){
+//                     storeId.push(playerId) 
+//                      res.send(forId[index])
+//                 }
+                
+//             }
+//         }
 
+//     }
+//     if(!isNameMatch){
+//         res.send("this name player is not exist")
+//     }
+    
+// }
+
+// })
+let persons =[
+    {
+        name: "PK",
+        age: 10,
+        votingStatus: false
+        
+    },
+    {
+        name: "SK",
+        age: 20,
+        votingStatus: false
+        
+    },
+    {
+        name: "AA",
+        age: 70,
+        votingStatus: false
+        
+    },
+    {
+        name: "SC",
+        age: 5,
+        votingStatus: false
+        
+    },
+    {
+        name: "HO",
+        age: 40,
+        votingStatus: false
+        
+    }
+]
+
+router.post('/voting_persion',function(req,res){
+    let inputAge=req.query
+    let votingAge=inputAge.age
+    let filterPersions=[]
+    for(let i in persons){
+        if(persons[i].age>votingAge){
+            persons[i].votingStatus=true
+            filterPersions.push(persons[i])
+        }
+    }
+    res.send({  data:filterPersions,status:true})
+})
+
+    
 module.exports = router;
