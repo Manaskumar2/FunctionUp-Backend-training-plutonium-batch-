@@ -6,7 +6,7 @@ const newBookSchema = new mongoose.Schema( {
         required:true
     },
     prices: {
-        indianPrice: String,
+       indianPrice:  String,
         europePrice: String,
     },
     tags: [String],

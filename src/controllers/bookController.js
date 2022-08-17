@@ -91,15 +91,14 @@ const Bookdetails=require('../models/newBookModel')
 
  }
  const getBooksInYear = async function(req,res){
-    let allBooks = await Bookdetails.find({year:2000})
+   let inyear =req.body.year
+    let allBooks = await Bookdetails.find({year:inyear})
     res.send({msg:allBooks})
  }
 const getParticularBooks= async function(req,res){
 
- let particularBook = await Bookdetails.find({$or:[{bookName :/^java/},{year:2003}]
- 
-
- })
+   let books= req.body
+ let particularBook = await Bookdetails.find(books)
  res.send({msg:particularBook})
 }
  
@@ -109,12 +108,13 @@ const getParticularBooks= async function(req,res){
     const getXINRBooks = async function (req, res) {
         
 
-        let indianBooks = await Bookdetails.find({$and:[{prices:{indianPrice:'100INR'}}]})
+        let indianBooks = await Bookdetails.find({"prices.indianPrice":{$in:["100INR","200INR","500INR"]}
+        })
       
         res.send({ msg: indianBooks })
  }
   const  getRandomBooks= async function(req,res){
-    let randomBooks= await Bookdetails.find({$and:[{totalPages:{$gt:500}},{  stockAvailable:true}]})
+    let randomBooks= await Bookdetails.find({$or:[{totalPages:{$gt:500}},{  stockAvailable:true}]})
     res.send({msg:randomBooks})
 
   }
