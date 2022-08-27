@@ -5,6 +5,8 @@ const UserController= require("../controllers/newUserController")
 const BookController= require("../controllers/bookController")
 const commonMW = require ("../middlewares/commonMiddlewares")
 const productController =require("../controllers/productControl")
+const orderController=require("../controllers/orderController")
+const middleware=require("../middlewares/middleware1")
 
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
@@ -59,6 +61,7 @@ router.get("/test-me", function (req, res) {
 
  router.post("/createUser",UserController.createUser)
 router.post("/createProduct",productController.productlist)
+router.post("/orderlist",middleware.mid1,orderController.Orderlist)
 
 
 module.exports = router;

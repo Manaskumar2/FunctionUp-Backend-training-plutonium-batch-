@@ -1,7 +1,7 @@
 const orderModel=require("../models/orderSchema")
 
 const mid1 =async function(req,res,next){
-    const freeAppUser=req.header.isfreeappuser
+    const freeAppUser=req.headers.isfreeappuser
     if(freeAppUser){
         next()
     }

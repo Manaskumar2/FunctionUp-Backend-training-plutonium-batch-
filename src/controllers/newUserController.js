@@ -1,7 +1,7 @@
-const userModel=require("../models/newUserModel")
+const userModel=require("../models/createUserModel")
 
 
-const createUser= async function(req,res){
+const createUser= async (req,res)=>{
     const freeAppUser=req.headers.isfreeappuser
     const data =req.body
     if(!freeAppUser){

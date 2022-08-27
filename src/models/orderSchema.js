@@ -3,7 +3,7 @@ const ObjectId=mongoose.Types.ObjectId
 const orderSchema= new mongoose.Schema({
     userId:{ 
         type:ObjectId,
-        ref :"user"
+        ref :"userdoc"
 
     },
     productId:{
@@ -12,5 +12,7 @@ const orderSchema= new mongoose.Schema({
     },
     amount:Number,
     isFreeAppUser:Boolean,
+    data:Number,
+    
 },{timestamps:true})
-module.exports
+module.exports=mongoose.model("Order",orderSchema)
